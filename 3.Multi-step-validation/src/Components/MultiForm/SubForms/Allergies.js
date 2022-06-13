@@ -1,21 +1,21 @@
 import React, { useRef } from 'react';
 import './SubForm.css';
 
-export default function FoodStyle(props) {
+export default function Allergies(props) {
   const preventFunc = (e) => {
     e.preventDefault();
 
     const styleData = {
-      foodStyle: [],
+      allergies: [],
     };
 
     allCheckboxes.current.forEach((checkbox) => {
       if (checkbox.checked) {
-        styleData.foodStyle.push(checkbox.value);
+        styleData.allergies.push(checkbox.value);
       }
     });
 
-    props.modifyIndex(4, styleData);
+    props.modifyIndex(5, styleData);
   };
 
   const allCheckboxes = useRef([]);
@@ -27,7 +27,7 @@ export default function FoodStyle(props) {
   };
 
   const handleReturn = () => {
-    props.modifyIndex(2);
+    props.modifyIndex(3);
   };
 
   // console.log(allCheckboxes);
@@ -35,42 +35,32 @@ export default function FoodStyle(props) {
   return (
     <div>
       <form className='checkbox-form' onSubmit={preventFunc}>
-        <p>Quelles sont tes cuisines préférées ?</p>
+        <p>As tu des allergies ?</p>
         <span>Choix multiple.</span>
 
-        <label htmlFor='italian'>Italienne</label>
+        <label htmlFor='milk'>Lait</label>
+        <input ref={addCheck} type='checkbox' id='milk' value='milk'></input>
+
+        <label htmlFor='pollen'>Pollen</label>
         <input
           ref={addCheck}
           type='checkbox'
-          id='italian'
-          value='italian'
+          id='pollen'
+          value='pollen'
         ></input>
 
-        <label htmlFor='japanese'>Japonaise</label>
+        <label htmlFor='nuts'>Noix</label>
+        <input ref={addCheck} type='checkbox' id='nuts' value='nuts'></input>
+
+        <label htmlFor='eggs'>Oeuf</label>
+        <input ref={addCheck} type='checkbox' id='eggs' value='eggs'></input>
+
+        <label htmlFor='shellfish'>Fruits de mer</label>
         <input
           ref={addCheck}
           type='checkbox'
-          id='japanese'
-          value='japanese'
-        ></input>
-
-        <label htmlFor='thai'>Thailandaise</label>
-        <input ref={addCheck} type='checkbox' id='thai' value='thai'></input>
-
-        <label htmlFor='french'>Francaise</label>
-        <input
-          ref={addCheck}
-          type='checkbox'
-          id='french'
-          value='french'
-        ></input>
-
-        <label htmlFor='chinese'>Chinoise</label>
-        <input
-          ref={addCheck}
-          type='checkbox'
-          id='chinese'
-          value='chinese'
+          id='shellfish'
+          value='shellfish'
         ></input>
 
         <div className='container-nav-btns'>
