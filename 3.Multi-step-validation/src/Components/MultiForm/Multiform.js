@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-import "./MultiForm.css";
-import Indicator from "./Indicator/Indicator";
-import CardBegin from "./Infos/CardBegin";
-import CardEnd from "./Infos/CardEnd";
-import DietForm from "./SubForms/DietForm";
+import React, { useState } from 'react';
+import './MultiForm.css';
+import Indicator from './Indicator/Indicator';
+import CardBegin from './Infos/CardBegin';
+import CardEnd from './Infos/CardEnd';
+import DietForm from './SubForms/DietForm';
+import FoodStyle from './SubForms/FoodStyle';
 
 export default function Multiform() {
   const [formIndex, setFormIndex] = useState(1);
   const [allFormData, setAllFormData] = useState({
-    dietForm: "",
+    dietForm: '',
     foodStyle: [],
     allergies: [],
     prefs: {},
@@ -25,17 +26,19 @@ export default function Multiform() {
     }
   };
 
-  console.log("allformdata", allFormData);
+  console.log('allformdata', allFormData);
   return (
-    <div className="container-multiform">
+    <div className='container-multiform'>
       <Indicator />
 
       {formIndex === 1 ? (
         <CardBegin modifyIndex={modifyIndex} />
       ) : formIndex === 2 ? (
         <DietForm modifyIndex={modifyIndex} />
+      ) : formIndex === 3 ? (
+        <FoodStyle modifyIndex={modifyIndex} />
       ) : (
-        ""
+        ''
       )}
       {/* <CardEnd/> */}
     </div>
